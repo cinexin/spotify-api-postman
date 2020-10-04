@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "5597a2d6-139a-4260-98fc-1bcf78094b5f",
+		"name": "Auth",
+		"description": "Authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get access token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bcfccf1a-49b3-4a23-af49-46959ce0e27f",
+						"exec": [
+							"pm.test(\"Put Spotify token in env\", function () {\r",
+							"    var auth = pm.response.json();\r",
+							"    if (auth.access_token !== null && auth.access_token !== undefined) {\r",
+							"        pm.environment.set(\"access_token\", auth.access_token);        \r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic ZTU0NjlmMjY5MzViNDQ3OWIxZDhmNTI1OTUyYjE0ZjI6OGFhM2Q4OGZkY2RlNGYxNmExM2Q3N2QyYWJhNzI0YWE=",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{auth-url}}/token",
+					"host": [
+						"{{auth-url}}"
+					],
+					"path": [
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Get Access token"
+			},
+			"response": []
+		},
+		{
+			"name": "Herokuapp token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7b47294b-0cd5-46c0-bc01-ff118e2e2cc8",
+						"exec": [
+							"pm.test(\"Put Spotify token in env\", function () {\r",
+							"    var auth = pm.response.json();\r",
+							"    if (auth.access_token !== null && auth.access_token !== undefined) {\r",
+							"        pm.environment.set(\"access_token\", auth.access_token);        \r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Basic ZTU0NjlmMjY5MzViNDQ3OWIxZDhmNTI1OTUyYjE0ZjI6OGFhM2Q4OGZkY2RlNGYxNmExM2Q3N2QyYWJhNzI0YWE="
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{heroku-app-url}}/{{clientId}}/{{clientSecret}}",
+					"host": [
+						"{{heroku-app-url}}"
+					],
+					"path": [
+						"{{clientId}}",
+						"{{clientSecret}}"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Get Access token"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

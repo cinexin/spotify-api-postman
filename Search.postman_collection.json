@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "bbab1be0-eca2-4632-bee8-dfaf81c5245f",
+		"name": "Search",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Search artists",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "{{access_token}}",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url-v1}}/search?q=Metallica&type=artist&limit=15",
+					"host": [
+						"{{url-v1}}"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Metallica"
+						},
+						{
+							"key": "type",
+							"value": "artist"
+						},
+						{
+							"key": "limit",
+							"value": "15"
+						}
+					]
+				},
+				"description": "Get a list of new releases"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
